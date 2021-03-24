@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-controller="Category" asp-action="Create">Create New Category</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:100px;height:100px;">Category Photo</th>
+            <th>Category Name</th>
+            <th>Products</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            <th>Is Confirmed?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:100px;height:100px;"><img src="~/img/category/@item.Photo" class="img-fluid" title="@item.Name" /></td>
+                <td>@item.Name</td>
+                <td>@item.Products.Count()</td>
+                <td>@item.CreatedDate.ToLongDateString()</td>
+                <td>
+                    @if (item.UpdatedDate != null)
+                    {
+                        @item.UpdatedDate.Value.ToLongDateString()
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>
+                    @if (item.IsConfirm == true)
+                    {
+                        <a asp-controller="Category" asp-action="DeActive" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Suspect</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Category" asp-action="Active" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Active</a>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="Category" asp-action="Detail" asp-route-id="@item.Id">Detail</a> |
+                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

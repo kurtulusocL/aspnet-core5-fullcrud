@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-controller="Product" asp-action="Create">Create New Product</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Category</th>           
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Pictures</th>           
+            <th>Is Confirmed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Name</td>
+            <td>
+                <a asp-controller="Product" asp-action="Category" asp-route-id="@item.CategoryId">@item.Category.Name</a>
+            </td>
+            <td>@item.Stock</td>
+            <td>@item.Price</td>
+            <td>
+                <a asp-controller="Picture" asp-action="Index">@item.Pictures.Count() photo(s)</a>
+            </td>
+            <td>
+                @if (item.IsConfirm == true)
+                {
+                    <a asp-controller="Product" asp-action="DeActive" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Suspect</a>
+                }
+                else
+                {
+                    <a asp-controller="Product" asp-action="Active" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Active</a>
+                }
+            </td>
+            <td>
+                <a asp-controller="Product" asp-action="CreatePhoto" asp-route-id="@item.Id">Create Photo</a> |
+                <a asp-controller="Product" asp-action="MultiplePhotoCreate" asp-route-id="@item.Id">Create Multiple Photo</a> |
+                <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">Detail</a> |
+                <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>}
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Product" asp-action="Index">Back to List</a>
+    <div>
+        @if (TempData["message"] != null)
+        {
+            <strong style="color:darkblue">
+                @TempData["message"]
+            </strong>
+
+        }
+        @if (ViewBag.Success == false)
+        {
+            <strong style="color:darkred">
+                @ViewBag.Message
+            </strong>
+        }
+    </div>
+</div>

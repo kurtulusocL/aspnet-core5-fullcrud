@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Picture>
+
+@{
+    ViewData["Title"] = "Photo List with Product Name";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-controller="Product" asp-action="Index">Product List</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:200px;height:150px">Picture</th>
+            <th>Photo Title</th>
+            <th>Product Name</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/img/product/@item.ImageUrl" class="img-fluid" />
+                </td>
+                <th>@item.Title</th>
+                <td>
+                    @if (item.ProductId != null)
+                    {
+                        @item.Product.Name
+                    }
+                </td>
+                <td>
+                    @item.CreatedDate.ToLongDateString()
+                </td>
+                <td>
+                    @if (item.UpdatedDate != null)
+                    {
+                        @item.UpdatedDate.Value.ToLongDateString()
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Picture" asp-action="Edit" asp-route-id="@item.ProductId">Delete</a> |
+                    <a asp-controller="Picture" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

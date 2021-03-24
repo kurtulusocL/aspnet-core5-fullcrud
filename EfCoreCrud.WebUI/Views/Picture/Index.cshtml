@@ -1,0 +1,74 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using X.PagedList.Web.Common
+@model IPagedList<Picture>
+
+@{
+    ViewData["Title"] = "Picture List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-controller="Product" asp-action="Index">Product List</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:200px;height:150px">Picture</th>
+            <th>Photo Title</th>
+            <th>Product Name</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            <th>Is Confirmed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/img/product/@item.ImageUrl" class="img-fluid" />
+                </td>
+                <th>@item.Title</th>
+                <td>
+                    @if (item.ProductId != null)
+                    {
+                        <a asp-controller="Picture" asp-action="Product" asp-route-id="@item.ProductId">@item.Product.Name</a>
+                    }
+                </td>
+                <td>
+                    @item.CreatedDate.ToLongDateString()
+                </td>
+                <td>
+                    @if (item.UpdatedDate != null)
+                    {
+                        @item.UpdatedDate.Value.ToLongDateString()
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+                <td>
+                    @if (item.IsConfirm == true)
+                    {
+                        <a asp-controller="Picture" asp-action="DeActive" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Suspect</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Picture" asp-action="Active" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Active</a>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Picture" asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                    <a asp-controller="Picture" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptionsBase.MinimalWithItemCountText)
+</div>

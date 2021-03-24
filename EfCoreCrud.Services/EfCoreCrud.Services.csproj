@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EfCoreCrud.Business\EfCoreCrud.Business.csproj" />
+    <ProjectReference Include="..\EfCoreCrud.Entities\EfCoreCrud.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

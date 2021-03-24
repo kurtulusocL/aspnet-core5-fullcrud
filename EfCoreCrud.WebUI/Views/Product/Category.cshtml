@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Product With It's Category";
+}
+
+<p>
+    <a asp-controller="Product" asp-action="Create">Create New Product</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Pictures</th>
+            <th>Created Time</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    @item.Category.Name
+                </td>
+                <td>@item.Stock</td>
+                <td>@item.Price</td>
+                <td>@item.Pictures.Count()</td>
+                <td>@item.CreatedDate.ToLongDateString()</td>
+                <td>
+                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>}
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Product" asp-action="Index">Back to List</a>
+</div>

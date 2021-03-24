@@ -1,0 +1,12 @@
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\bin\Debug\net5.0\EfCoreCrud.Core.deps.json
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\bin\Debug\net5.0\EfCoreCrud.Core.dll
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\bin\Debug\net5.0\ref\EfCoreCrud.Core.dll
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\bin\Debug\net5.0\EfCoreCrud.Core.pdb
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\EfCoreCrud.Core.csprojAssemblyReference.cache
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\EfCoreCrud.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\EfCoreCrud.Core.AssemblyInfoInputs.cache
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\EfCoreCrud.Core.AssemblyInfo.cs
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\EfCoreCrud.Core.csproj.CoreCompileInputs.cache
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\EfCoreCrud.Core.dll
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\ref\EfCoreCrud.Core.dll
+C:\Users\kurtulusocL\Desktop\EfCoreCrud\EfCoreCrud.Core\obj\Debug\net5.0\EfCoreCrud.Core.pdb
